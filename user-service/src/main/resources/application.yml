@@ -1,0 +1,41 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-service
+  base-path: /user2
+#  boot:
+#    admin:
+#      client:
+#        instance:
+#          prefer-ip: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /user/actuator
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      management.context-path: /user/actuator
+    health-check-url-path: user/actuator/health
+
+logging:
+  file:
+    name: /logs/admin-server.log

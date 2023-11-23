@@ -1,0 +1,19 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      #      base-path: /${spring.application.name}/actuator
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
